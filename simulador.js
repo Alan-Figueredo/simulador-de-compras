@@ -11,11 +11,12 @@ class Factura{
 }
 
 class Producto{
-    constructor(id, nombre, precio, descripcion){
+    constructor(id, nombre, precio, descripcion, imagen){
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
+        this.imagen = imagen;
     }
     sumarIva(){
         this.precio = this.precio *1.21;
@@ -40,10 +41,10 @@ function busquedaPorTeclado(){
     }
 }
 const aProductos = [
-    {id: 2, nombre: "Macucas", precio: 60, descripcion:"Galletitas rellenas", categoria:"Galletitas"},
-    {id: 4, nombre: "Nutella", precio: 600, descripcion:"Nutella Ferrero 350g Grande Chocolate Cacao Postre", categoria:"Dulces"},
-    {id: 3, nombre: "Brahma", precio: 80, descripcion:"Lata Brahma 500cc", categoria:"Cervezas"},
-    {id: 4, nombre: "Dulce de leche", precio: 120, descripcion:"Dulce de leche repostero", categoria:"Dulces"},
+    {id: 2, nombre: "Macucas", precio: 60, descripcion:"Galletitas rellenas", categoria:"Galletitas", imagen: "Macucas.jfif"},
+    {id: 4, nombre: "Nutella", precio: 600, descripcion:"Nutella Ferrero 350g Grande Chocolate Cacao Postre", categoria:"Dulces",imagen: "Nutella.jfif"},
+    {id: 3, nombre: "Brahma", precio: 80, descripcion:"Lata Brahma 500cc", categoria:"Cervezas",imagen: "brahma.jpg"},
+    {id: 4, nombre: "Dulce de leche", precio: 120, descripcion:"Dulce de leche repostero", categoria:"Dulces", imagen: "DDL.jfif"},
 ];
 
 let productosFiltrados = aProductos;
@@ -101,7 +102,7 @@ const limpiarHTML = ()=>{
 //check
 const mostrarProductos = () =>{
     for(const producto of productosFiltrados){
-        $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card"><div class="card-body"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary" onclick=obtenerProductosComprados(${producto.id});>Añadir </a>    </div></div></div>`)
+        $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </a></div></div></div></div></div>`)
     }
     $("#fila").append(`<div class="col-12 mt-5 text-right pr-3 mb-5 pr-4"><a href="factura.html" class="btn btn-primary" target="_blank">Obtener Factura</a></div>`)
 }
@@ -109,7 +110,7 @@ const mostrarProductos = () =>{
 //Funcion que muestra las categorias de los productos
 const mostrarCategorias = ()=>{
     for(const elemento of aProductos){
-        $("#categorias").append(`<p class="mx-2">${elemento.categoria}</p>`)
+        $("#categorias").append(`<p class="mx-2">${elemento.categoria}</p><br>`)
     }
 }
 
@@ -121,7 +122,7 @@ const filtrarMaxMin=()=>{
     limpiarHTML();
     for(const producto of productosFiltrados){
         if(producto.precio <= valMax && producto.precio >= valMin){
-            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card"><div class="card-body"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary" onclick=obtenerProductosComprados(${producto.id});>Añadir </a>    </div></div></div>`)
+            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </a></div></div></div></div></div>`)
         }
     }
     $("#fila").append(`<div class="col-12 mt-5 text-right pr-3 mb-5 pr-4"><a href="factura.html" class="btn btn-primary" target="_blank">Obtener Factura</a></div>`)
