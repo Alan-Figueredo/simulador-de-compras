@@ -1,6 +1,7 @@
 //Muestra los productos comprados 
 const verFactura = () =>{
     let compras = JSON.parse(localStorage.getItem('fact'));
+    console.log(compras);
     for(const prod of compras){
         $("#fila").append(`<p>${prod.nombre} <p class="text-right"><b>$${prod.precio}</b></p></p>`);
     }
