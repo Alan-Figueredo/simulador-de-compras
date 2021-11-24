@@ -1,9 +1,8 @@
 //Definicion de clases
 class Factura{
-    constructor(producto, cantidad, monto, cuotas){
+    constructor(producto, monto, cuotas){
         this.fecha = new Date();
         this.producto = producto;
-        this.cantidad = cantidad;
         this.monto = monto;
         this.cuotas = cuotas;
 
@@ -17,6 +16,7 @@ class Producto{
         this.precio = precio;
         this.descripcion = descripcion;
         this.imagen = imagen;
+        this.cantidad;
     }
     sumarIva(){
         this.precio = this.precio *1.21;
@@ -41,10 +41,10 @@ function busquedaPorTeclado(){
     }
 }
 const aProductos = [
-    {id: 2, nombre: "Macucas", precio: 60, descripcion:"Galletitas rellenas", categoria:"Galletitas", imagen: "Macucas.jfif"},
-    {id: 4, nombre: "Nutella", precio: 600, descripcion:"Nutella Ferrero 350g Grande Chocolate Cacao Postre", categoria:"Dulces",imagen: "Nutella.jfif"},
-    {id: 3, nombre: "Brahma", precio: 80, descripcion:"Lata Brahma 500cc", categoria:"Cervezas",imagen: "brahma.jpg"},
-    {id: 4, nombre: "Dulce de leche", precio: 120, descripcion:"Dulce de leche repostero", categoria:"Dulces", imagen: "DDL.jfif"},
+    {id: 2, nombre: "Macucas", precio: 60, descripcion:"Galletitas rellenas", categoria:"Galletitas", imagen: "Macucas.jfif", cantidad:0},
+    {id: 4, nombre: "Nutella", precio: 600, descripcion:"Nutella Ferrero 350g Grande Chocolate Cacao Postre", categoria:"Dulces",imagen: "Nutella.jfif", cantidad:0},
+    {id: 3, nombre: "Brahma", precio: 80, descripcion:"Lata Brahma 500cc", categoria:"Cervezas",imagen: "brahma.jpg", cantidad:0},
+    {id: 4, nombre: "Dulce de leche", precio: 120, descripcion:"Dulce de leche repostero", categoria:"Dulces", imagen: "DDL.jfif", cantidad:0},
 ];
 let productosFiltrados = aProductos;
 
@@ -105,8 +105,18 @@ const mostrarProductos = () =>{
 
 //Funcion que muestra las categorias de los productos
 const mostrarCategorias = ()=>{
+    let cat = [];
     for(const elemento of aProductos){
-        $("#categorias").append(`<p class="mx-2">${elemento.categoria}</p><br>`);
+        if(cat.includes(elemento.categoria)){
+            continue;
+        }else{
+            cat.push(elemento.categoria);
+        }
+        $("#categorias").append(`<a class="${elemento.categoria} mx-2">${elemento.categoria}</a><br>`);
+        $(`.${elemento.categoria}`).on("click", function(){
+            limpiarHTML();
+            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${elemento.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${elemento.nombre}</h5><p class="card-text">${elemento.descripcion}</p><p class="card-text"><b>$ ${elemento.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${elemento.id});>Añadir </a></div></div></div></div></div>`);
+        });
     }
 }
 
@@ -124,6 +134,12 @@ const filtrarMaxMin=()=>{
     $("#fila").append(`<div class="col-12 mt-5 text-right pr-3 mb-5 pr-4"><a href="factura.html" class="btn btn-primary" target="_blank">Obtener Factura</a></div>`)
 }
 $("#enviarMaxMin").click(filtrarMaxMin);
+
+function checkEnterClick(e){
+    if(e.keyCode == 13){
+        filtrarMaxMin();
+    }
+ }
 
 //Fin funcion para filtrar por maximo y minimo
 

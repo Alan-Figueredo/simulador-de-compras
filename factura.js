@@ -1,8 +1,14 @@
 //Muestra los productos comprados 
 const verFactura = () =>{
     let compras = JSON.parse(localStorage.getItem('fact'));
+    let fact = [];
     console.log(compras);
     for(const prod of compras){
+        if(fact.includes(prod.categoria)){
+            continue;
+        }else{
+            fact.push(prod.categoria);
+        }
         $("#fila").append(`<p>${prod.nombre} <p class="text-right"><b>$${prod.precio}</b></p></p>`);
     }
 }
