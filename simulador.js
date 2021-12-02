@@ -90,7 +90,7 @@ const limpiarHTML = ()=>{
 //Funcion que muestra los productos cargados en el array aProductos en la estructura HTML
 const mostrarProductos = () =>{
     for(const producto of productosFiltrados){
-        $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </a></div></div></div></div></div>`);
+        $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><button href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </button></div></div></div></div></div>`);
         $("#fila").hide().fadeIn(200);
 
     }
@@ -109,7 +109,7 @@ const mostrarCategorias = ()=>{
         $("#categorias").append(`<a class="${elemento.categoria} mx-2">${elemento.categoria}</a><br>`);
         $(`.${elemento.categoria}`).on("click", function(){
             limpiarHTML();
-            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${elemento.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${elemento.nombre}</h5><p class="card-text">${elemento.descripcion}</p><p class="card-text"><b>$ ${elemento.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${elemento.id});>Añadir </a></div></div></div></div></div>`);
+            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${elemento.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${elemento.nombre}</h5><p class="card-text">${elemento.descripcion}</p><p class="card-text"><b>$ ${elemento.precio}</b></p><button href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${elemento.id});>Añadir </button></div></div></div></div></div>`);
         });
     }
 }
@@ -122,7 +122,7 @@ const filtrarMaxMin=()=>{
     limpiarHTML();
     for(const producto of productosFiltrados){
         if(producto.precio <= valMax && producto.precio >= valMin){
-            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </a></div></div></div></div></div>`)
+            $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><button href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </button></div></div></div></div></div>`)
         }
     }
     $("#fila").append(`<div class="col-12 mt-5 text-right pr-3 mb-5 pr-4"><a href="factura.html" class="btn btn-primary" target="_blank">Obtener Factura</a></div>`)
