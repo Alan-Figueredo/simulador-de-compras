@@ -24,13 +24,10 @@ class Producto{
 }
 
 //Filtracion de datos
-//let boton = document.getElementById("btnFiltrar");
 $("#btnfiltrar").click(filtrarDatos);
-//boton.addEventListener("click", filtrarDatos); //error al ingresar a la factura
 
 let inputBusqueda = document.getElementById("busqueda");
 $("#busqueda").on("keyup", busquedaPorTeclado)
-//inputBusqueda.addEventListener("keyup", busquedaPorTeclado); //error al ingresar a la factura
 
 function busquedaPorTeclado(){
     if(inputBusqueda.value.length > 3){
@@ -48,7 +45,7 @@ const aProductos = [
 ];
 let productosFiltrados = aProductos;
 
-//
+
 function filtrarDatos(){
     let palabraClave = document.getElementById('busqueda');
     productosFiltrados = aProductos.filter(elemento => elemento.descripcion.includes(palabraClave.value) || elemento.nombre.includes(palabraClave.value));
@@ -56,7 +53,6 @@ function filtrarDatos(){
     mostrarProductos();
 }
 
-//Fin de filtracion de datos
 
 //ordenar datos por menor
 const ordenarXMenor = ()=>{
@@ -69,7 +65,6 @@ $("#ordenarMenor").click(ordenarXMenor);
 //Fin ordenar datos por menor
 
 //ordenar datos por mayor
-//let ordenarMayor = document.getElementById("ordenarMayor");
 const ordenarXMayor = ()=>{
     productosFiltrados.sort((a,b) => (a.precio < b.precio) ? 1 : ((b.precio < a.precio) ? -1 : 0));
     limpiarHTML();
@@ -93,7 +88,6 @@ const limpiarHTML = ()=>{
 
 
 //Funcion que muestra los productos cargados en el array aProductos en la estructura HTML
-//check
 const mostrarProductos = () =>{
     for(const producto of productosFiltrados){
         $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><a href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </a></div></div></div></div></div>`);
@@ -159,6 +153,7 @@ let fact = JSON.parse(localStorage.getItem('Fact'));
 
 const agregarProductoAlCarrito = (idProducto) =>{
     let productoComprado = aProductos.find(x=>x.id == idProducto);
+    productoComprado.cantidad +=1;
     fact.push(productoComprado);
     localStorage.setItem('fact', JSON.stringify(fact));
 }
