@@ -21,7 +21,25 @@ const calcularTotal = ()=>{
     for(let elemento of compras){
         total = total + elemento.precio;
     }
-    $("#totalP").append(`<b>Total: $${total}</b>`)
+    return total;
 }
+let total = calcularTotal();
+$("#totalP").append(`<b>Total: $ ${total}</b>`)
+$("#descarga").append(`<a href="#" class="card-link" id="save-btn">Descargar factura</a>`);
+
+//Funcion que hace un archivo de texto con el monto final de la factura
+$("#save-btn").click(function(){
+    let fecha = new Date();
+    fecha = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
+    let blob = new Blob(
+    [`---------------------- Factura ----------------------      
+
+Fecha: ${fecha}
+Total: ${total}
+---------------------- Simulador de compra ----------------------
+    `], 
+    {type: "text/plain; charset=utf-8"});
+    saveAs(blob, "testfile1.txt");
+})
 
 //Fin calcular total de la factura
