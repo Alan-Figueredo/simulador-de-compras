@@ -11,16 +11,16 @@ const verFactura = () =>{
         $(`#modificar${prod.id}`).click(function(){
             $(`#fila${prod.id}`).append(`<div class="col text-right"><button class="btn btn-primary mr-2" id="restar${prod.id}" style="padding-left: 14px;padding-right: 14px;">-</button><input type="text" placeholder="${prod.cantidad}" style="width: 50px;height: 34px;padding-bottom: 6px;"><button class="btn btn-primary ml-2" id="sumar${prod.id}">+</button></div></div>`)
             $(`#modificar${prod.id}`).remove();
-        })
-        $(`#restar${prod.id}`).click(function(){
-            prod.cantidad-=1;
-            console.log(prod.cantidad)
-        })
-        $(`#sumar${prod.id}`).click(function(){
-            compras.push(prod);
-            prod.cantidad+=1;
-            localStorage.setItem('Carrito', JSON.stringify(compras));
-            console.log(prod.cantidad)
+            $(`#restar${prod.id}`).click(function(){
+                prod.cantidad-=1;
+                console.log(prod.cantidad)
+            })
+            $(`#sumar${prod.id}`).click(function(){
+                compras.push(prod);
+                prod.cantidad+=1;
+                localStorage.setItem('Carrito', JSON.stringify(compras));
+                console.log(prod.cantidad)
+            })
         })
     }
 }
