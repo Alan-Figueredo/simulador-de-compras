@@ -156,4 +156,5 @@ const agregarProductoAlCarrito = (idProducto) =>{
     productoComprado.cantidad +=1;
     fact.push(productoComprado);
     localStorage.setItem('fact', JSON.stringify(fact));
+    localStorage.setItem('Carrito', JSON.stringify(fact));
 }
