@@ -1,9 +1,6 @@
 const verFactura = () =>{
     let compras = JSON.parse(localStorage.getItem('fact'));
     let fact = [];
-    if(fact.length === 0){
-        $("#fila").append(`<div class="alert alert-warning text-center" role="alert">¡No hay productos agregados al carrito!</div><div class="row"><div class="col text-right"><a class="btn btn-primary" href="simulador.html">Volver a la tienda</a></div></div>`)
-    }
     for(const prod of compras){
         if(fact.includes(prod.categoria)){
             continue;
@@ -33,6 +30,9 @@ const verFactura = () =>{
                 console.log(prod.cantidad)
             })
         })
+    }
+    if(fact.length === 0){
+        $("#fila").append(`<div class="alert alert-warning text-center" role="alert">¡No hay productos agregados al carrito!</div><div class="row"><div class="col text-right"><a class="btn btn-primary" href="simulador.html">Volver a la tienda</a></div></div>`)
     }
     $("#fila").append(`<div class="row text-right"><div class="col"><button id="finalizarCompra" class="btn btn-primary">Finalizar Compra</button></div></div>`)
     $("#finalizarCompra").click(function (){
