@@ -102,6 +102,13 @@ const mostrarProductos = () =>{
             e.preventDefault();
         }
     })
+    $("#carrito").click(function(e){
+        if(fact.length === 0){
+            $("#fila").prepend(`<div class="alert alert-danger" role="alert" id="cartelError">¡Debe ingresar productos al carrito primero!</div>`);
+          $("#cartelError").delay(2500).slideUp(1000)
+            e.preventDefault();
+        }
+    })
 }
 
 //Funcion que muestra las categorias de los productos
