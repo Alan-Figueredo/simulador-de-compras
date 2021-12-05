@@ -2,3 +2,9 @@ header{
     background-color: #007bff;
     color: white;
 }
+.links{
+    color:#808080
+}
+.links:hover{
+    color: #afafaf;
+}

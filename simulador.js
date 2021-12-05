@@ -113,7 +113,7 @@ const mostrarCategorias = ()=>{
         }else{
             cat.push(elemento.categoria);
         }
-        $("#categorias").append(`<a class="${elemento.categoria} mx-2">${elemento.categoria}</a><br>`);
+        $("#categorias").append(`<a class="${elemento.categoria} mx-2 links">${elemento.categoria}</a><br>`);
         $(`.${elemento.categoria}`).on("click", function(){
             limpiarHTML();
             $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${elemento.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${elemento.nombre}</h5><p class="card-text">${elemento.descripcion}</p><p class="card-text"><b>$ ${elemento.precio}</b></p><button href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${elemento.id});>Añadir </button></div></div></div></div></div>`);
