@@ -94,7 +94,14 @@ const mostrarProductos = () =>{
         $("#fila").hide().fadeIn(200);
 
     }
-    $("#fila").append(`<div class="col-12 mt-5 text-right pr-3 mb-5 pr-4"><a href="factura.html" class="btn btn-primary" target="_blank">Obtener Factura</a></div>`)
+    $("#fila").append(`<div class="col-12 mt-5 text-center pr-3 mb-5 pr-4" id="divError"><a text-right href="factura.html" class="btn btn-primary" id="obtenerFactura" target="_blank">Obtener Factura</a></div>`)
+    $("#obtenerFactura").click(function(e){
+        if(fact.length === 0){
+            $("#divError").prepend(`<div class="alert alert-danger" role="alert" id="cartelError">¡Debe ingresar productos al carrito primero!</div>`);
+          $("#cartelError").delay(2500).slideUp(1000)
+            e.preventDefault();
+        }
+    })
 }
 
 //Funcion que muestra las categorias de los productos
