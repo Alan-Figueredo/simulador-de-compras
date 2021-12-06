@@ -7,14 +7,17 @@ const verFactura = () =>{
         }else{
             fact.push(prod.categoria);
         }
-        $("#fila").append(`<div class="row mb-5"><div class="col"><p>${prod.nombre}</p></div><div class="col text-right" id="fila${prod.id}"><a id="modificar${prod.id}" href="#"><i class="fas fa-edit"></i></a></div>`);
+        $("#fila").append(`<div class="row mb-5" id="divProducto${prod.id}"><div class="col"><p>${prod.nombre}</p></div><div class="col text-right" id="fila${prod.id}"><a id="modificar${prod.id}" href="#"><i class="fas fa-edit"></i></a></div>`);
         $(`#modificar${prod.id}`).click(function(){
             $(`#fila${prod.id}`).append(`<div class="col text-right"><button class="btn btn-primary mr-2" id="restar${prod.id}" style="padding-left: 14px;padding-right: 14px;">-</button><input type="text" placeholder="${prod.cantidad}" style="width: 50px;height: 34px;padding-bottom: 6px;" id="input${prod.id}"><button class="btn btn-primary ml-2" id="sumar${prod.id}">+</button></div></div>`)
             $(`#modificar${prod.id}`).remove();
             $(`#restar${prod.id}`).click(function(){
                 if(prod.cantidad <= 0){
-                    alert("No se pueden eliminar mas elementos")
-                    compras[prod].remove();//revisar
+                    $(`#fila${prod.id}`).remove();
+                    $(`#divProducto${prod.id}`).append(`<div class="alert alert-success" role="alert">
+                    Producto eliminado del carrito correctamente.
+                  </div>`).delay(2500).slideUp(1000);
+                    //compras[prod.id].remove();//revisar
                 }else{
                     prod.cantidad-=1;
                 }
