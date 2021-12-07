@@ -17,7 +17,6 @@ const verFactura = () =>{
                     $(`#divProducto${prod.id}`).append(`<div class="alert alert-success" role="alert">
                     Producto eliminado del carrito correctamente.
                   </div>`).delay(2500).slideUp(1000);
-                    //compras[prod.id].remove();//revisar
                 }else{
                     prod.cantidad-=1;
                     $(`#input${prod.id}`).val(prod.cantidad)
@@ -30,7 +29,6 @@ const verFactura = () =>{
                 compras.push(prod);
                 prod.cantidad+=1;
                 $(`#input${prod.id}`).val(prod.cantidad)
-                //revisar$(`#input${prod.id}`).append(`<input type="text" placeholder="${prod.cantidad}" style="width: 50px;height: 34px;padding-bottom: 6px; id="input${prod.id}">`);
                 localStorage.setItem('Carrito', JSON.stringify(compras));
                 console.log(prod.cantidad)
             })

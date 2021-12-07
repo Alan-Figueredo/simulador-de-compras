@@ -12,7 +12,6 @@ const verFactura = () =>{
         $("#fila").append(`<p>${prod.nombre}<p class="text-right"><b>$${prod.precio} x ${prod.cantidad} = $${(prod.precio)*prod.cantidad}</b></p></p>`);
     }
 }
-//Final calcular total de la factura
 //calcular total de la factura
 
 const calcularTotal = ()=>{
@@ -41,5 +40,3 @@ Total: ${total}
     {type: "text/plain; charset=utf-8"});
     saveAs(blob, "testfile1.txt");
 })
-
-//Fin calcular total de la factura

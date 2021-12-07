@@ -62,7 +62,6 @@ const ordenarXMenor = ()=>{
 }
 $("#ordenarMenor").click(ordenarXMenor);
 
-//Fin ordenar datos por menor
 
 //ordenar datos por mayor
 const ordenarXMayor = ()=>{
@@ -71,8 +70,6 @@ const ordenarXMayor = ()=>{
     mostrarProductos();
 }
 $("#ordenarMayor").click(ordenarXMayor);
-
-//Fin ordenar datos por mayor
 
 //Limpiar estructura de productos
 const limpiarHTML = ()=>{
@@ -149,8 +146,6 @@ function checkEnterClick(e){
         filtrarMaxMin();
     }
  }
-
-//Fin funcion para filtrar por maximo y minimo
 
 //Funcion que obtiene los productos comprados y los agrega al carrito
 const obtenerProductosComprados = (idProducto) =>{
