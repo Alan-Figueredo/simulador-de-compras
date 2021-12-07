@@ -20,6 +20,7 @@ const verFactura = () =>{
                     //compras[prod.id].remove();//revisar
                 }else{
                     prod.cantidad-=1;
+                    $(`#input${prod.id}`).val(prod.cantidad)
                 }
                 $(`input${prod.id}`).append(prod.cantidad);
                 localStorage.setItem('Carrito', JSON.stringify(compras));
