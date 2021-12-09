@@ -87,7 +87,7 @@ const limpiarHTML = ()=>{
 //Funcion que muestra los productos cargados en el array aProductos en la estructura HTML
 const mostrarProductos = () =>{
     for(const producto of productosFiltrados){
-        $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><button href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </button></div></div></div></div></div>`);
+        $("#fila").append(`<div class="col-12 mb-3 pr-4"><div class="card text-center"><div class="card-body"><div class="row"><div class="col-sm-2"><img src="assets/${producto.imagen}" alt="" class="img-fluid img-thumbnail logo" style="width: 210px;"></div><div class="col text-left"><h5 class="card-title">${producto.nombre}</h5><p class="card-text">${producto.descripcion}</p><p class="card-text"><b>$ ${producto.precio}</b></p><button href="#" class="btn btn-primary mt-4" onclick=obtenerProductosComprados(${producto.id});>Añadir </button></div></div></div></div></div>`);
         $("#fila").hide().fadeIn(200);
 
     }
