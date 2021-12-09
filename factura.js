@@ -12,6 +12,7 @@ const verFactura = () =>{
         $("#fila").append(`<p>${prod.nombre}<p class="text-right"><b>$${prod.precio} x ${prod.cantidad} = $${(prod.precio)*prod.cantidad}</b></p></p>`);
     }
 }
+verFactura();
 //calcular total de la factura
 
 const calcularTotal = ()=>{
@@ -22,6 +23,7 @@ const calcularTotal = ()=>{
     }
     return total;
 }
+calcularTotal();
 let total = calcularTotal();
 $("#totalP").append(`<b>Total: $ ${total}</b>`)
 $("#descarga").append(`<a href="#" class="card-link" id="save-btn">Descargar factura</a>`);

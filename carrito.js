@@ -42,3 +42,4 @@ const verFactura = () =>{
         $("#finalizarCompra").remove();
     })
 }
+verFactura();
